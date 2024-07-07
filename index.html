@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Good Morning, Rakshikha</title>
+    <style>
+        body {
+            background: url('https://www.link-to-background-image.com') no-repeat center center fixed;
+            background-size: cover;
+            font-family: 'Comic Sans MS', cursive, sans-serif;
+            text-align: center;
+            overflow: hidden;
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .card {
+            background-color: rgba(255, 255, 255, 0.8);
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+            display: inline-block;
+            position: relative;
+            animation: fadeIn 2s;
+        }
+        h1 {
+            color: #ff4081;
+            font-size: 3em;
+            margin: 0;
+        }
+        p {
+            font-size: 1.5em;
+            color: #333333;
+        }
+        .heart {
+            font-size: 50px;
+            color: #ff4081;
+        }
+        .rays {
+            position: absolute;
+            width: 100px;
+            height: 100px;
+            background: radial-gradient(circle, rgba(255,255,0,0.5) 0%, rgba(255,255,0,0) 70%);
+            border-radius: 50%;
+            pointer-events: none;
+            animation: pulse 2s infinite;
+        }
+        @keyframes pulse {
+            0% {transform: scale(0.8);}
+            50% {transform: scale(1.2);}
+            100% {transform: scale(0.8);}
+        }
+        @keyframes fadeIn {
+            from {opacity: 0;}
+            to {opacity: 1;}
+        }
+        .popup {
+            position: absolute;
+            background: #ffffff;
+            color: #ff4081;
+            padding: 10px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            font-size: 1.2em;
+            animation: floatUp 4s infinite;
+        }
+        @keyframes floatUp {
+            0% {transform: translateY(0);}
+            50% {transform: translateY(-20px);}
+            100% {transform: translateY(0);}
+        }
+    </style>
+    <script>
+        document.addEventListener('mousemove', function(e) {
+            var rays = document.querySelector('.rays');
+            rays.style.left = e.pageX + 'px';
+            rays.style.top = e.pageY + 'px';
+        });
+        function createPopup(text) {
+            var popup = document.createElement('div');
+            popup.classList.add('popup');
+            popup.innerText = text;
+            popup.style.left = Math.random() * (window.innerWidth - 100) + 'px';
+            popup.style.top = Math.random() * (window.innerHeight - 50) + 'px';
+            document.body.appendChild(popup);
+            setTimeout(function() {
+                popup.remove();
+            }, 4000);
+        }
+        document.addEventListener('DOMContentLoaded', function() {
+            var messages = ['You are amazing!', 'Keep smiling!', 'You are loved!', 'Have a great day!'];
+            setInterval(function() {
+                createPopup(messages[Math.floor(Math.random() * messages.length)]);
+            }, 3000);
+        });
+    </script>
+</head>
+<body>
+    <div class="card">
+        <h1>Good Morning, Rakshikha</h1>
+        <p>I hope you have a lovely day ahead. Remember to eat on time and stay hydrated. 😊</p>
+        <div class="heart">❤️</div>
+    </div>
+    <div class="rays"></div>
+    <audio autoplay loop>
+        <source src="your-music-file.mp3" type="audio/mpeg">
+        Your browser does not support the audio element.
+    </audio>
+</body>
+</html>
